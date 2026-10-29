@@ -1,0 +1,781 @@
+
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio Citra Meidiana Puspita Sari, Electrical Engineering — Telecommunications, RF, Embedded Systems, and IoT.">
+  <title>Citra Meidiana Puspita Sari | Portfolio</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: "#14213D",
+            gold: "#D4AF37",
+            cream: "#F8F7F2"
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"]
+          },
+          boxShadow: {
+            soft: "0 10px 35px rgba(20,33,61,0.10)"
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    html { scroll-padding-top: 90px; }
+    body { font-family: Inter, sans-serif; }
+    .hero-gradient {
+      background:
+        radial-gradient(circle at 85% 15%, rgba(212,175,55,.17), transparent 28%),
+        linear-gradient(135deg, #14213d 0%, #1b3155 100%);
+    }
+    .gold-line {
+      height: 4px;
+      width: 58px;
+      border-radius: 99px;
+      background: #D4AF37;
+    }
+    .section-label { letter-spacing: .18em; }
+    .project-image, .gallery-image {
+      transition: transform .4s ease;
+    }
+    .project-card:hover .project-image,
+    .gallery-item:hover .gallery-image {
+      transform: scale(1.04);
+    }
+    .nav-link.active { color: #D4AF37; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-cream text-slate-800 antialiased">
+
+  <!-- ==========================================
+       IMAGE CONFIGURATION
+       Ganti URL gambar pada bagian ini.
+       ========================================== -->
+  <script>
+    const images = {
+      hero: {
+        src: "https://iili.io/n8Vx8cG.md.jpg",
+        alt: "Foto profil Citra"
+      },
+      about: {
+        src: "https://iili.io/n8VTGcu.md.jpg",
+        alt: "Potret Citra"
+      },
+
+      // Gambar proyek antena asli
+      antenna: {
+        src: "https://iili.io/n8VHPr7.md.jpg",
+        alt: "Multiband Microstrip Antenna"
+      },
+
+      antennaDefense: {
+        src: "https://iili.io/n8VHkes.md.jpg",
+        alt: "Dokumentasi proyek antena"
+      },
+
+      // Gambar proyek Agrisense NPK asli
+      agrisense: {
+        src: "https://iili.io/n8VHwgt.md.jpg",
+        alt: "Agrisense NPK IoT Precision Agriculture"
+      },
+
+      agrisenseField: {
+        src: "https://iili.io/n8VHe7n.md.jpg",
+        alt: "Dokumentasi proyek Agrisense"
+      },
+
+      labWork: {
+        src: "https://iili.io/n8VHgLl.md.jpg",
+        alt: "Kegiatan laboratorium"
+      },
+
+      // URL Smart Ricefield terbaru
+      embedded: {
+        src: "https://iili.io/n8wOye1.md.jpg",
+        alt: "Smart Ricefield Automated Irrigation"
+      },
+
+      graduation: {
+        src: "https://iili.io/n8VT8cg.md.jpg",
+        alt: "Dokumentasi kelulusan"
+      },
+
+      graduationPortrait: {
+        src: "https://iili.io/n8VxePn.md.jpg",
+        alt: "Potret kelulusan"
+      },
+
+      graduationCumLaude: {
+        src: "https://iili.io/n8Vxg94.md.jpg",
+        alt: "Kelulusan Cum Laude"
+      },
+
+      // URL Military Radar terbaru
+      militaryRadar: {
+        src: "https://iili.io/n8wRw4R.md.jpg",
+        alt: "Military Radar System Simulation MATLAB"
+      }
+    };
+  </script>
+
+  <!-- NAVIGATION -->
+  <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-navy/95 text-white backdrop-blur-md">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
+      <a href="#home" class="text-xl font-extrabold">Citra<span class="text-gold">.</span></a>
+
+      <div class="hidden items-center gap-6 text-sm md:flex">
+        <a class="nav-link hover:text-gold" href="#home">Home</a>
+        <a class="nav-link hover:text-gold" href="#about">About</a>
+        <a class="nav-link hover:text-gold" href="#experience">Experience</a>
+        <a class="nav-link hover:text-gold" href="#projects">Projects</a>
+        <a class="nav-link hover:text-gold" href="#skills">Skills</a>
+        <a class="nav-link hover:text-gold" href="#education">Education</a>
+        <a class="nav-link hover:text-gold" href="#gallery">Gallery</a>
+        <a href="#contact" class="rounded-full bg-gold px-5 py-2.5 font-bold text-navy hover:bg-white">Contact Me</a>
+      </div>
+
+      <button id="menu-toggle" class="rounded-lg p-2 hover:bg-white/10 md:hidden" aria-label="Buka menu" aria-expanded="false">
+        <i data-lucide="menu" class="h-6 w-6"></i>
+      </button>
+    </nav>
+
+    <div id="mobile-menu" class="hidden border-t border-white/10 bg-navy px-5 py-4 md:hidden">
+      <div class="flex flex-col gap-4 text-sm">
+        <a class="mobile-link hover:text-gold" href="#home">Home</a>
+        <a class="mobile-link hover:text-gold" href="#about">About</a>
+        <a class="mobile-link hover:text-gold" href="#experience">Experience</a>
+        <a class="mobile-link hover:text-gold" href="#projects">Projects</a>
+        <a class="mobile-link hover:text-gold" href="#skills">Skills</a>
+        <a class="mobile-link hover:text-gold" href="#education">Education</a>
+        <a class="mobile-link hover:text-gold" href="#organization">Organization</a>
+        <a class="mobile-link hover:text-gold" href="#gallery">Gallery</a>
+        <a class="mobile-link hover:text-gold" href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section id="home" class="hero-gradient relative overflow-hidden pt-28 text-white">
+      <div class="absolute -right-24 top-24 h-72 w-72 rounded-full border border-gold/20"></div>
+      <div class="absolute -right-12 top-36 h-48 w-48 rounded-full border border-gold/20"></div>
+
+      <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-5 py-16 md:grid-cols-2 md:py-24 lg:px-8">
+        <div class="order-2 md:order-1">
+          <p class="section-label text-xs font-bold uppercase text-gold sm:text-sm">
+            Electrical Engineering · Telecommunications
+          </p>
+
+          <h1 class="mt-5 text-4xl font-extrabold leading-tight sm:text-5xl lg:text-6xl">
+            Citra Meidiana
+            <span class="block text-gold">Puspita Sari</span>
+          </h1>
+
+          <p class="mt-6 max-w-xl text-lg leading-8 text-slate-200">
+            Electrical Engineering graduate with an interest in RF and antenna
+            systems, embedded systems, IoT, and telecommunications infrastructure.
+          </p>
+
+          <p class="mt-4 max-w-xl leading-7 text-slate-300">
+            Passionate about engineering, hands-on experimentation, and building
+            practical technology solutions.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="#projects" class="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 font-bold text-navy hover:bg-white">
+              Explore Projects <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+            </a>
+            <a href="#contact" class="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3 font-semibold hover:border-gold hover:text-gold">
+              Get in Touch <i data-lucide="mail" class="h-4 w-4"></i>
+            </a>
+          </div>
+
+          <div class="mt-10 flex flex-wrap gap-6 text-sm text-slate-300">
+            <span class="flex items-center gap-2"><i data-lucide="map-pin" class="h-4 w-4 text-gold"></i>East Jakarta, Indonesia</span>
+            <span class="flex items-center gap-2"><i data-lucide="graduation-cap" class="h-4 w-4 text-gold"></i>GPA 3.53/4.00 · Cum Laude</span>
+          </div>
+        </div>
+
+        <div class="order-1 flex justify-center md:order-2">
+          <div class="relative w-full max-w-sm">
+            <div class="absolute -inset-3 rotate-3 rounded-[2rem] border-2 border-gold/70"></div>
+            <div class="relative overflow-hidden rounded-[2rem] border border-white/20 bg-white/10 shadow-2xl">
+              <img id="hero-image" src="" alt="" class="h-[390px] w-full object-cover sm:h-[470px]">
+            </div>
+            <div class="absolute -bottom-5 -left-4 rounded-2xl bg-white p-4 text-navy shadow-xl sm:-left-8">
+              <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Academic Achievement</p>
+              <p class="mt-1 text-2xl font-extrabold">Cum Laude</p>
+              <p class="text-sm text-slate-500">Electrical Engineering</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="h-1 bg-gradient-to-r from-navy via-gold to-navy"></div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="px-5 py-20 md:py-28 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-12">
+          <p class="section-label text-xs font-bold uppercase text-gold">Get to Know Me</p>
+          <h2 class="mt-3 text-3xl font-extrabold text-navy sm:text-4xl">About Me</h2>
+          <div class="gold-line mt-5"></div>
+        </div>
+
+        <div class="grid items-center gap-12 md:grid-cols-2">
+          <div class="overflow-hidden rounded-3xl bg-white shadow-soft">
+            <img id="about-image" src="" alt="" class="h-[300px] w-full object-cover sm:h-[420px]" loading="lazy">
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-bold leading-snug text-navy">
+              Engineering knowledge with a hands-on approach.
+            </h3>
+            <p class="mt-5 leading-8 text-slate-600">
+              I graduated from Universitas Andalas with a degree in Electrical
+              Engineering, specializing in Telecommunications. My interests
+              include RF and antenna design, embedded systems, IoT applications,
+              and telecommunications networks.
+            </p>
+            <p class="mt-4 leading-8 text-slate-600">
+              Through laboratory responsibilities, practical sessions, academic
+              projects, and an industry internship, I have developed technical
+              problem-solving, documentation, coordination, and teamwork skills.
+            </p>
+
+            <div class="mt-7 grid grid-cols-2 gap-4">
+              <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                <i data-lucide="radio-tower" class="h-6 w-6 text-gold"></i>
+                <h4 class="mt-3 font-bold text-navy">RF & Antennas</h4>
+                <p class="mt-1 text-sm text-slate-500">Design and measurement</p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                <i data-lucide="cpu" class="h-6 w-6 text-gold"></i>
+                <h4 class="mt-3 font-bold text-navy">Embedded & IoT</h4>
+                <p class="mt-1 text-sm text-slate-500">Hardware integration</p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                <i data-lucide="network" class="h-6 w-6 text-gold"></i>
+                <h4 class="mt-3 font-bold text-navy">Telecommunications</h4>
+                <p class="mt-1 text-sm text-slate-500">Networks and infrastructure</p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                <i data-lucide="users" class="h-6 w-6 text-gold"></i>
+                <h4 class="mt-3 font-bold text-navy">Coordination</h4>
+                <p class="mt-1 text-sm text-slate-500">Laboratory activities</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="bg-white px-5 py-20 md:py-28 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-12">
+          <p class="section-label text-xs font-bold uppercase text-gold">Professional Journey</p>
+          <h2 class="mt-3 text-3xl font-extrabold text-navy sm:text-4xl">Experience</h2>
+          <div class="gold-line mt-5"></div>
+        </div>
+
+        <div class="ml-3 space-y-8 border-l-2 border-slate-200 pl-7 md:ml-6 md:pl-10">
+
+          <article class="relative rounded-2xl border border-slate-100 bg-cream p-6 shadow-sm md:p-8">
+            <span class="absolute -left-[37px] top-8 h-5 w-5 rounded-full border-4 border-white bg-gold md:-left-[49px]"></span>
+            <div class="flex flex-col justify-between gap-3 md:flex-row">
+              <div>
+                <h3 class="text-xl font-bold text-navy">Secretary & Treasurer</h3>
+                <p class="mt-1 font-semibold text-slate-500">Telecommunication Systems and Networks Laboratory</p>
+              </div>
+              <span class="h-fit rounded-full bg-navy/5 px-4 py-2 text-sm font-semibold text-navy">Jan 2025 – Jul 2026</span>
+            </div>
+            <ul class="mt-5 list-disc space-y-2 pl-5 leading-7 text-slate-600">
+              <li>Supported administrative and financial documentation for laboratory activities.</li>
+              <li>Maintained organized records and coordinated operational requirements.</li>
+              <li>Contributed to the smooth execution of laboratory programs.</li>
+            </ul>
+          </article>
+
+          <article class="relative rounded-2xl border border-slate-100 bg-cream p-6 shadow-sm md:p-8">
+            <span class="absolute -left-[37px] top-8 h-5 w-5 rounded-full border-4 border-white bg-gold md:-left-[49px]"></span>
+            <div class="flex flex-col justify-between gap-3 md:flex-row">
+              <div>
+                <h3 class="text-xl font-bold text-navy">Communication Systems Practicum Coordinator</h3>
+                <p class="mt-1 font-semibold text-slate-500">Communication Systems Laboratory</p>
+              </div>
+              <span class="h-fit rounded-full bg-navy/5 px-4 py-2 text-sm font-semibold text-navy">Jan – Jul 2026</span>
+            </div>
+            <ul class="mt-5 list-disc space-y-2 pl-5 leading-7 text-slate-600">
+              <li>Coordinated practicum sessions serving more than 115 students per cycle.</li>
+              <li>Supported practicum preparation, scheduling, and communication.</li>
+              <li>Promoted laboratory safety and adherence to HSE/K3 procedures.</li>
+            </ul>
+          </article>
+
+          <article class="relative rounded-2xl border border-slate-100 bg-cream p-6 shadow-sm md:p-8">
+            <span class="absolute -left-[37px] top-8 h-5 w-5 rounded-full border-4 border-white bg-gold md:-left-[49px]"></span>
+            <div class="flex flex-col justify-between gap-3 md:flex-row">
+              <div>
+                <h3 class="text-xl font-bold text-navy">Multimedia Signal Processing Laboratory Assistant</h3>
+                <p class="mt-1 font-semibold text-slate-500">Universitas Andalas</p>
+              </div>
+              <span class="h-fit rounded-full bg-navy/5 px-4 py-2 text-sm font-semibold text-navy">Jan 2025 – Jul 2026</span>
+            </div>
+            <ul class="mt-5 list-disc space-y-2 pl-5 leading-7 text-slate-600">
+              <li>Assisted practical sessions for approximately 60 students per session.</li>
+              <li>Supported students in understanding practical concepts and completing exercises.</li>
+              <li>Helped maintain an organized laboratory learning environment.</li>
+            </ul>
+          </article>
+
+          <article class="relative rounded-2xl border border-slate-100 bg-cream p-6 shadow-sm md:p-8">
+            <span class="absolute -left-[37px] top-8 h-5 w-5 rounded-full border-4 border-white bg-gold md:-left-[49px]"></span>
+            <div class="flex flex-col justify-between gap-3 md:flex-row">
+              <div>
+                <h3 class="text-xl font-bold text-navy">Telecommunications Infrastructure Intern</h3>
+                <p class="mt-1 font-semibold text-slate-500">PT Carano Integrasi Teknologi</p>
+              </div>
+              <span class="h-fit rounded-full bg-navy/5 px-4 py-2 text-sm font-semibold text-navy">Oct – Nov 2025</span>
+            </div>
+            <ul class="mt-5 list-disc space-y-2 pl-5 leading-7 text-slate-600">
+              <li>Participated in telecommunications infrastructure monitoring activities.</li>
+              <li>Gained exposure to operational workflows and infrastructure documentation.</li>
+              <li>Developed practical understanding of industry work processes.</li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="px-5 py-20 md:py-28 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-12">
+          <p class="section-label text-xs font-bold uppercase text-gold">Selected Work</p>
+          <h2 class="mt-3 text-3xl font-extrabold text-navy sm:text-4xl">Featured Projects</h2>
+          <div class="gold-line mt-5"></div>
+          <p class="mt-5 max-w-2xl leading-7 text-slate-600">
+            Selected academic and engineering projects in RF systems, IoT,
+            embedded technology, and signal simulation.
+          </p>
+        </div>
+
+        <div id="project-grid" class="grid gap-7 sm:grid-cols-2"></div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="bg-navy px-5 py-20 text-white md:py-28 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-12">
+          <p class="section-label text-xs font-bold uppercase text-gold">Technical Toolkit</p>
+          <h2 class="mt-3 text-3xl font-extrabold sm:text-4xl">Skills & Expertise</h2>
+          <div class="gold-line mt-5"></div>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <article class="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <i data-lucide="radio-tower" class="h-7 w-7 text-gold"></i>
+            <h3 class="mt-5 text-xl font-bold">RF & Antenna Systems</h3>
+            <p class="mt-3 leading-7 text-slate-300">Microstrip antennas, RF measurements, return loss analysis, antenna simulation, and VNA operation.</p>
+            <div class="skill-tags mt-4 flex flex-wrap gap-2" data-tags="CST Studio Suite|VNA|RF Measurement"></div>
+          </article>
+
+          <article class="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <i data-lucide="cpu" class="h-7 w-7 text-gold"></i>
+            <h3 class="mt-5 text-xl font-bold">Embedded Systems</h3>
+            <p class="mt-3 leading-7 text-slate-300">Microcontroller integration, sensor interfaces, communication protocols, and hardware prototyping.</p>
+            <div class="skill-tags mt-4 flex flex-wrap gap-2" data-tags="STM32|Raspberry Pi Pico|UART / I2C"></div>
+          </article>
+
+          <article class="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <i data-lucide="sprout" class="h-7 w-7 text-gold"></i>
+            <h3 class="mt-5 text-xl font-bold">IoT Applications</h3>
+            <p class="mt-3 leading-7 text-slate-300">Sensor-based monitoring, smart agriculture, automated irrigation, and system integration.</p>
+            <div class="skill-tags mt-4 flex flex-wrap gap-2" data-tags="IoT|Sensors|Automation"></div>
+          </article>
+
+          <article class="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <i data-lucide="network" class="h-7 w-7 text-gold"></i>
+            <h3 class="mt-5 text-xl font-bold">Telecommunications</h3>
+            <p class="mt-3 leading-7 text-slate-300">Fiber optic networks, FTTH, AON/PON concepts, and infrastructure monitoring.</p>
+            <div class="skill-tags mt-4 flex flex-wrap gap-2" data-tags="FTTH|AON / PON|OTDR"></div>
+          </article>
+
+          <article class="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <i data-lucide="code-2" class="h-7 w-7 text-gold"></i>
+            <h3 class="mt-5 text-xl font-bold">Programming & Simulation</h3>
+            <p class="mt-3 leading-7 text-slate-300">Programming and simulation for engineering analysis and prototype development.</p>
+            <div class="skill-tags mt-4 flex flex-wrap gap-2" data-tags="Python|C / C++|MATLAB|MicroPython"></div>
+          </article>
+
+          <article class="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <i data-lucide="shield-check" class="h-7 w-7 text-gold"></i>
+            <h3 class="mt-5 text-xl font-bold">Instrumentation & HSE</h3>
+            <p class="mt-3 leading-7 text-slate-300">Laboratory instrumentation, practical session support, safety awareness, and documentation.</p>
+            <div class="skill-tags mt-4 flex flex-wrap gap-2" data-tags="Oscilloscope|Spectrum Analyzer|HSE / K3"></div>
+          </article>
+        </div>
+
+        <div class="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6">
+          <h3 class="font-bold text-gold">Additional Tools</h3>
+          <p class="mt-3 leading-7 text-slate-300">Proteus · OriginPro · Signal Generator · Digital Multimeter · OTDR · Technical Documentation · Team Coordination</p>
+        </div>
+
+        <div class="mt-6 rounded-2xl border border-white/10 bg-white/5 p-6">
+          <h3 class="font-bold text-gold">Languages</h3>
+          <div class="mt-3 flex flex-wrap gap-3">
+            <span class="skill-tag">Indonesian — Native</span>
+            <span class="skill-tag">English — Intermediate</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="bg-white px-5 py-20 md:py-24 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-12">
+          <p class="section-label text-xs font-bold uppercase text-gold">Academic Background</p>
+          <h2 class="mt-3 text-3xl font-extrabold text-navy sm:text-4xl">Education</h2>
+          <div class="gold-line mt-5"></div>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-[auto_1fr]">
+          <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-navy text-gold">
+            <i data-lucide="graduation-cap" class="h-8 w-8"></i>
+          </div>
+          <div>
+            <div class="flex flex-col justify-between gap-3 md:flex-row">
+              <div>
+                <h3 class="text-2xl font-bold text-navy">Universitas Andalas</h3>
+                <p class="mt-2 font-semibold text-slate-500">Bachelor of Engineering — Electrical Engineering</p>
+                <p class="mt-1 text-slate-600">Telecommunications concentration</p>
+              </div>
+              <span class="h-fit rounded-full bg-cream px-4 py-2 text-sm font-semibold text-navy">Aug 2022 – Jul 2026</span>
+            </div>
+            <div class="mt-6 flex flex-wrap gap-4">
+              <div class="rounded-xl border border-slate-200 px-5 py-4">
+                <p class="text-sm text-slate-500">Final GPA</p>
+                <p class="mt-1 text-2xl font-extrabold text-navy">3.53/4.00</p>
+              </div>
+              <div class="rounded-xl border border-slate-200 px-5 py-4">
+                <p class="text-sm text-slate-500">Academic Distinction</p>
+                <p class="mt-1 text-2xl font-extrabold text-navy">Cum Laude</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ORGANIZATION -->
+    <section id="organization" class="px-5 py-20 md:py-24 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-12">
+          <p class="section-label text-xs font-bold uppercase text-gold">Beyond Academics</p>
+          <h2 class="mt-3 text-3xl font-extrabold text-navy sm:text-4xl">Organization & Activities</h2>
+          <div class="gold-line mt-5"></div>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2">
+          <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-soft">
+            <i data-lucide="users" class="h-7 w-7 text-gold"></i>
+            <h3 class="mt-5 text-xl font-bold text-navy">HMTE — Member Representative Council / Bursa</h3>
+            <p class="mt-2 text-sm font-semibold text-slate-500">2024 – 2025</p>
+            <p class="mt-4 leading-7 text-slate-600">Participated in student organization activities and contributed to coordination and organizational responsibilities.</p>
+          </article>
+
+          <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-soft">
+            <i data-lucide="calendar-check" class="h-7 w-7 text-gold"></i>
+            <h3 class="mt-5 text-xl font-bold text-navy">Pekan Elektro — Competition Division</h3>
+            <p class="mt-2 text-sm font-semibold text-slate-500">2024</p>
+            <p class="mt-4 leading-7 text-slate-600">Supported competition activities involving approximately 8–16 teams and helped coordinate event execution.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="bg-white px-5 py-20 md:py-28 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-12">
+          <p class="section-label text-xs font-bold uppercase text-gold">Snapshots</p>
+          <h2 class="mt-3 text-3xl font-extrabold text-navy sm:text-4xl">Project & Personal Gallery</h2>
+          <div class="gold-line mt-5"></div>
+          <p class="mt-5 max-w-2xl leading-7 text-slate-600">Project documentation, laboratory activities, and academic milestones.</p>
+        </div>
+        <div id="gallery-grid" class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="hero-gradient px-5 py-20 text-white md:py-28 lg:px-8">
+      <div class="mx-auto max-w-5xl">
+        <div class="text-center">
+          <p class="section-label text-xs font-bold uppercase text-gold">Let's Connect</p>
+          <h2 class="mt-3 text-3xl font-extrabold sm:text-4xl">Have a Project in Mind?</h2>
+          <div class="gold-line mx-auto mt-5"></div>
+          <p class="mx-auto mt-6 max-w-2xl leading-8 text-slate-300">
+            Open to opportunities to learn, collaborate, and contribute to
+            telecommunications, RF systems, embedded technology, and IoT projects.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-5 sm:grid-cols-2">
+          <a href="mailto:citrameidianaps@gmail.com" class="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 hover:border-gold/60 hover:bg-white/10">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gold/15 text-gold"><i data-lucide="mail" class="h-6 w-6"></i></div>
+            <div><p class="text-sm text-slate-300">Email</p><p class="mt-1 break-all font-semibold">citrameidianaps@gmail.com</p></div>
+          </a>
+
+          <a href="https://www.linkedin.com/in/citra-meidiana-puspita-sari-b8a0a1267" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 hover:border-gold/60 hover:bg-white/10">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gold/15 text-gold"><i data-lucide="linkedin" class="h-6 w-6"></i></div>
+            <div><p class="text-sm text-slate-300">LinkedIn</p><p class="mt-1 font-semibold">Connect with me</p></div>
+          </a>
+
+          <a href="tel:+62895617025851" class="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 hover:border-gold/60 hover:bg-white/10">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gold/15 text-gold"><i data-lucide="phone" class="h-6 w-6"></i></div>
+            <div><p class="text-sm text-slate-300">Phone</p><p class="mt-1 font-semibold">+62 895-6170-25851</p></div>
+          </a>
+
+          <div class="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-5">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gold/15 text-gold"><i data-lucide="map-pin" class="h-6 w-6"></i></div>
+            <div><p class="text-sm text-slate-300">Location</p><p class="mt-1 font-semibold">East Jakarta, DKI Jakarta, Indonesia</p></div>
+          </div>
+        </div>
+
+        <div class="mt-10 text-center">
+          <a href="mailto:citrameidianaps@gmail.com?subject=Portfolio%20Inquiry" class="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 font-bold text-navy hover:bg-white">
+            Send Me an Email <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#0C1529] px-5 py-7 text-white lg:px-8">
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
+      <a href="#home" class="text-lg font-extrabold">Citra<span class="text-gold">.</span></a>
+      <p class="text-sm text-slate-400">© <span id="current-year"></span> Citra Meidiana Puspita Sari. All rights reserved.</p>
+      <a href="#home" class="flex items-center gap-2 text-sm text-slate-300 hover:text-gold">Back to top <i data-lucide="arrow-up" class="h-4 w-4"></i></a>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // Profile images
+    document.getElementById("hero-image").src = images.hero.src;
+    document.getElementById("hero-image").alt = images.hero.alt;
+    document.getElementById("about-image").src = images.about.src;
+    document.getElementById("about-image").alt = images.about.alt;
+
+    // Project data
+    // The antenna and Agrisense images are intentionally SWAPPED.
+    const projects = [
+      {
+        title: "Multiband Microstrip Antenna — Non-Contact RF Sensor",
+        category: "RF & Antenna Engineering",
+        period: "Mar – Jul 2026",
+        image: images.agrisense.src,
+        alt: images.agrisense.alt,
+        description: "Designed and evaluated a multiband microstrip antenna concept for non-contact RF sensing using CST Studio Suite, an FR4 substrate, and VNA-based measurements.",
+        highlights: [
+          "Return loss target better than -10 dB",
+          "Evaluation with sugar solutions at 0–30% concentration",
+          "Reported linearity of 0.9"
+        ],
+        tools: ["CST Studio Suite", "VNA", "FR4", "RF Measurement"]
+      },
+      {
+        title: "Military Radar System Simulation",
+        category: "Signal Processing & Simulation",
+        period: "Academic Project",
+        image: images.militaryRadar.src,
+        alt: images.militaryRadar.alt,
+        description: "A MATLAB-based academic project exploring radar system behavior through computational modeling and signal simulation.",
+        highlights: [
+          "MATLAB-based simulation",
+          "Radar system modeling",
+          "Signal analysis and visualization"
+        ],
+        tools: ["MATLAB", "Signal Processing", "Simulation"]
+      },
+      {
+        title: "Smart Ricefield — Automated Irrigation",
+        category: "Embedded Systems & IoT",
+        period: "Academic Project",
+        image: images.embedded.src,
+        alt: images.embedded.alt,
+        description: "An automated irrigation prototype integrating STM32 and Raspberry Pi Pico with sensors, a pump motor, and display components.",
+        highlights: [
+          "Dual MCU integration: STM32 and Raspberry Pi Pico",
+          "UART and I2C communication",
+          "HC-SR04, soil moisture sensor, ACS712, pump motor, and OLED"
+        ],
+        tools: ["STM32", "Raspberry Pi Pico", "UART / I2C", "Sensors"]
+      },
+      {
+        title: "Agrisense — NPK IoT Precision Agriculture",
+        category: "IoT & Smart Agriculture",
+        period: "Academic Project",
+        image: images.antenna.src,
+        alt: images.antenna.alt,
+        description: "An IoT-oriented precision agriculture concept focused on NPK-related monitoring and the use of sensor information to support agricultural decision-making.",
+        highlights: [
+          "Agricultural monitoring concept",
+          "Sensor and IoT integration",
+          "Technology for precision agriculture"
+        ],
+        tools: ["IoT", "Sensors", "Smart Agriculture"]
+      }
+    ];
+
+    const projectGrid = document.getElementById("project-grid");
+
+    projects.forEach((project) => {
+      const card = document.createElement("article");
+      card.className = "project-card overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-soft";
+
+      const tags = project.tools.map(tool =>
+        `<span class="rounded-full bg-navy/5 px-3 py-1.5 text-xs font-semibold text-navy">${tool}</span>`
+      ).join("");
+
+      const highlights = project.highlights.map(item =>
+        `<li>${item}</li>`
+      ).join("");
+
+      card.innerHTML = `
+        <div class="overflow-hidden bg-slate-100">
+          <img src="${project.image}" alt="${project.alt}" class="project-image h-56 w-full object-cover sm:h-64" loading="lazy">
+        </div>
+        <div class="p-6 sm:p-7">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <span class="rounded-full bg-gold/15 px-3 py-1.5 text-xs font-bold text-navy">${project.category}</span>
+            <span class="text-xs font-medium text-slate-500">${project.period}</span>
+          </div>
+          <h3 class="mt-5 text-xl font-extrabold leading-snug text-navy">${project.title}</h3>
+          <p class="mt-4 leading-7 text-slate-600">${project.description}</p>
+          <ul class="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-slate-600">${highlights}</ul>
+          <div class="mt-5 flex flex-wrap gap-2">${tags}</div>
+        </div>
+      `;
+      projectGrid.appendChild(card);
+    });
+
+    // Gallery
+    const galleryItems = [
+      { image: images.antenna, label: "Agrisense IoT" },
+      { image: images.antennaDefense, label: "Field Testing" },
+      { image: images.agrisense, label: "RF Antena Project" },
+      { image: images.agrisenseField, label: "Final Defense" },
+      { image: images.labWork, label: "Laboratory Activities" },
+      { image: images.embedded, label: "Smart Ricefield Project" },
+      { image: images.graduation, label: "Graduation" },
+      { image: images.graduationPortrait, label: "Graduation Portrait" },
+      { image: images.graduationCumLaude, label: "Cum Laude Achievement" },
+      { image: images.militaryRadar, label: "Military Radar Simulation" }
+    ];
+
+    const galleryGrid = document.getElementById("gallery-grid");
+
+    galleryItems.forEach((item) => {
+      const figure = document.createElement("figure");
+      figure.className = "gallery-item relative overflow-hidden rounded-2xl bg-slate-100";
+
+      figure.innerHTML = `
+        <img src="${item.image.src}" alt="${item.image.alt}" class="gallery-image aspect-square w-full object-cover" loading="lazy">
+        <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/90 to-transparent px-4 pb-4 pt-10 text-sm font-semibold text-white">
+          ${item.label}
+        </figcaption>
+      `;
+      galleryGrid.appendChild(figure);
+    });
+
+    // Skill tags
+    document.querySelectorAll(".skill-tags").forEach(container => {
+      const tags = container.dataset.tags.split("|");
+      container.innerHTML = tags.map(tag =>
+        `<span class="rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-slate-200">${tag}</span>`
+      ).join("");
+    });
+
+    document.querySelectorAll(".skill-tag").forEach(tag => {
+      tag.className = "inline-flex rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-slate-200";
+    });
+
+    // Mobile navigation
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuToggle.addEventListener("click", () => {
+      const willOpen = mobileMenu.classList.contains("hidden");
+      mobileMenu.classList.toggle("hidden");
+      menuToggle.setAttribute("aria-expanded", String(willOpen));
+      menuToggle.innerHTML = willOpen
+        ? '<i data-lucide="x" class="h-6 w-6"></i>'
+        : '<i data-lucide="menu" class="h-6 w-6"></i>';
+      lucide.createIcons();
+    });
+
+    document.querySelectorAll(".mobile-link").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.innerHTML = '<i data-lucide="menu" class="h-6 w-6"></i>';
+        lucide.createIcons();
+      });
+    });
+
+    // Active navigation state
+    const sections = document.querySelectorAll("main section[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            navLinks.forEach(link => {
+              link.classList.toggle(
+                "active",
+                link.getAttribute("href") === `#${entry.target.id}`
+              );
+            });
+          }
+        });
+      }, { rootMargin: "-35% 0px -55% 0px" });
+
+      sections.forEach(section => observer.observe(section));
+    }
+
+    // Footer year and icons
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+    lucide.createIcons();
+  </script>
+</body>
+</html>
